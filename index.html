@@ -109,6 +109,26 @@
             letter-spacing: 2px;
         }
 
+        .save-the-date {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 40px;
+            background: var(--sage);
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .save-the-date:hover {
+            background: var(--gold);
+            transform: scale(1.05);
+        }
+
         .scroll-indicator {
             position: absolute;
             bottom: 40px;
@@ -128,9 +148,9 @@
             stroke: var(--sage);
         }
 
-        /* Info Section */
-        .info-section {
-            background-color: white;
+        /* Schedule Section */
+        .schedule-section {
+            background: white;
         }
 
         .section-title {
@@ -151,32 +171,141 @@
             margin: 20px auto 0;
         }
 
-        .info-grid {
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--sage-light);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            text-align: right;
+            padding-right: 60px;
+            padding-left: 0;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            text-align: left;
+            padding-left: 60px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 4px solid var(--cream);
+            z-index: 1;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: var(--cream);
+            padding: 30px;
+            border-radius: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .timeline-time {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .timeline-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--charcoal);
+            margin-bottom: 10px;
+        }
+
+        .timeline-desc {
+            color: var(--charcoal-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .timeline-location {
+            margin-top: 15px;
+            padding: 10px 15px;
+            background: white;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            color: var(--sage);
+            display: inline-block;
+        }
+
+        /* Info Section */
+        .info-section {
+            background: linear-gradient(135deg, var(--sage) 0%, var(--sage-light) 100%);
+            color: white;
+        }
+
+        .info-section .section-title {
+            color: white;
+        }
+
+        .info-section .section-title::after {
+            background: white;
+        }
+
+        .info-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
             max-width: 900px;
             margin: 0 auto;
         }
 
         .info-card {
-            text-align: center;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
             padding: 40px 30px;
             border-radius: 20px;
-            background: var(--cream);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
         }
 
         .info-card:hover {
+            background: rgba(255,255,255,0.25);
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
         .info-icon {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             margin: 0 auto 20px;
-            background: var(--sage);
+            background: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -184,68 +313,86 @@
         }
 
         .info-icon svg {
-            width: 30px;
-            height: 30px;
-            stroke: white;
+            width: 35px;
+            height: 35px;
+            stroke: var(--sage);
         }
 
         .info-card h3 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.5rem;
-            color: var(--charcoal);
             margin-bottom: 15px;
         }
 
         .info-card p {
-            color: var(--charcoal-light);
+            opacity: 0.9;
             font-size: 0.95rem;
         }
 
-        .info-card .highlight {
-            color: var(--gold);
+        .highlight-text {
+            font-size: 1.3rem;
             font-weight: 500;
-            font-size: 1.1rem;
+            margin-bottom: 10px;
         }
 
-        /* RSVP Section */
-        .rsvp-section {
-            background: linear-gradient(135deg, var(--sage) 0%, var(--sage-light) 100%);
+        /* Day After Section */
+        .day-after-section {
+            background: white;
+        }
+
+        .party-card {
+            max-width: 700px;
+            margin: 0 auto;
             text-align: center;
-            color: white;
+            padding: 50px 40px;
+            background: linear-gradient(135deg, var(--cream) 0%, #F5EDE3 100%);
+            border-radius: 30px;
+            border: 2px solid var(--sage-light);
         }
 
-        .rsvp-section .section-title {
-            color: white;
+        .party-emoji {
+            font-size: 4rem;
+            margin-bottom: 20px;
         }
 
-        .rsvp-section .section-title::after {
-            background: white;
+        .party-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: var(--charcoal);
+            margin-bottom: 10px;
         }
 
-        .rsvp-text {
-            font-size: 1.1rem;
+        .party-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
             margin-bottom: 30px;
-            opacity: 0.9;
         }
 
-        .rsvp-btn {
-            display: inline-block;
-            padding: 18px 50px;
+        .party-location {
             background: white;
-            color: var(--sage);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            font-weight: 500;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            letter-spacing: 1px;
+            padding: 20px 30px;
+            border-radius: 15px;
+            display: inline-block;
+            margin-bottom: 20px;
         }
 
-        .rsvp-btn:hover {
-            background: var(--gold);
-            color: white;
-            transform: scale(1.05);
+        .party-location-name {
+            font-weight: 500;
+            color: var(--charcoal);
+            font-size: 1.1rem;
+        }
+
+        .party-location-place {
+            color: var(--sage);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .party-note {
+            color: var(--charcoal-light);
+            font-size: 0.9rem;
+            font-style: italic;
         }
 
         /* Footer */
@@ -265,18 +412,6 @@
             font-size: 1.5rem;
             margin: 20px 0;
             color: var(--gold);
-        }
-
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         /* Navigation dots */
@@ -308,6 +443,18 @@
             background: var(--sage);
         }
 
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         @media (max-width: 768px) {
             .nav-dots {
                 display: none;
@@ -317,7 +464,27 @@
                 padding: 60px 20px;
             }
 
-            .info-grid {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(odd) {
+                flex-direction: column;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .timeline-content,
+            .timeline-item:nth-child(odd) .timeline-content {
+                text-align: left;
+                padding-left: 50px;
+                padding-right: 20px;
+            }
+
+            .info-cards {
                 grid-template-columns: 1fr;
             }
         }
@@ -327,8 +494,9 @@
     <!-- Navigation Dots -->
     <nav class="nav-dots">
         <button class="nav-dot active" data-section="hero" aria-label="Hero"></button>
+        <button class="nav-dot" data-section="schedule" aria-label="Ablauf"></button>
         <button class="nav-dot" data-section="info" aria-label="Info"></button>
-        <button class="nav-dot" data-section="rsvp" aria-label="RSVP"></button>
+        <button class="nav-dot" data-section="party" aria-label="Party"></button>
     </nav>
 
     <!-- Hero Section -->
@@ -336,8 +504,9 @@
         <div class="hero-content fade-in">
             <h1 class="couple-names">Nico & Franziska</h1>
             <span class="ampersand">&</span>
-            <p class="wedding-date">27. September 2026</p>
-            <p class="tagline">Wir heiraten!</p>
+            <p class="wedding-date">02. Oktober 2026</p>
+            <p class="tagline">Unsere standesamtliche Hochzeit</p>
+            <a href="#schedule" class="save-the-date">Ablauf ansehen ↓</a>
         </div>
         <div class="scroll-indicator">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -346,56 +515,97 @@
         </div>
     </section>
 
+    <!-- Schedule Section -->
+    <section class="section schedule-section" id="schedule">
+        <h2 class="section-title fade-in">Ablauf</h2>
+        <div class="timeline">
+            <div class="timeline-item fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-time">11:30 Uhr</div>
+                    <div class="timeline-title">Ankunft der Gäste</div>
+                    <div class="timeline-desc">Bitte seid pünktlich, damit wir gemeinsam diesen besonderen Moment erleben können.</div>
+                </div>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-time">12:00 Uhr</div>
+                    <div class="timeline-title">Die Trauung</div>
+                    <div class="timeline-desc">Die standesamtliche Hochzeit im Forum Terra Nova in Elsdorf.</div>
+                    <div class="timeline-location">📍 Forum Terra Nova, Elsdorf</div>
+                </div>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-time">14:00 Uhr</div>
+                    <div class="timeline-title">Gemeinsames Mittagessen</div>
+                    <div class="timeline-desc">Wir laden euch ein, mit uns den Tag bei einem schönen Mittagessen ausklingen zu lassen.</div>
+                    <div class="timeline-location">🍽️ Gemeinsam mit allen Gästen</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Info Section -->
     <section class="section info-section" id="info">
-        <h2 class="section-title fade-in">Wann & Wo</h2>
-        <div class="info-grid">
-            <div class="info-card fade-in">
-                <div class="info-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7-7a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                    </svg>
-                </div>
-                <h3>Die Trauung</h3>
-                <p class="highlight">14:00 Uhr</p>
-                <p>Am Schloss<br>Bergstraße 1<br>12345 Musterstadt</p>
-            </div>
-            <div class="info-card fade-in">
-                <div class="info-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 15.546c-1 1-2.5 1.5-4 1.5-3 0-5.5-2.5-5.5-5.5 0-1.5.5-3 1.5-4 1-1 2.5-1.5 4-1.5 3 0 5.5 2.5 5.5 5.5 0 1.5-.5 3-1.5 4z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v2m0 16v2M2 12h2m16 0h2" />
-                    </svg>
-                </div>
-                <h3>Die Feier</h3>
-                <p class="highlight">18:00 Uhr</p>
-                <p>Gasthaus Zur Linde<br>Hauptstraße 42<br>12345 Musterstadt</p>
-            </div>
+        <h2 class="section-title fade-in">Wichtige Infos</h2>
+        <div class="info-cards">
             <div class="info-card fade-in">
                 <div class="info-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                 </div>
-                <h3>Der Tag</h3>
-                <p class="highlight">Sonntag</p>
-                <p>27. September 2026<br>Herbsthochzeit<br>im schönen Bayern</p>
+                <h3>Datum</h3>
+                <p class="highlight-text">02. Oktober 2026</p>
+                <p>Freitag</p>
+            </div>
+            <div class="info-card fade-in">
+                <div class="info-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                </div>
+                <h3>Ort</h3>
+                <p class="highlight-text">Forum Terra Nova</p>
+                <p>Elsdorf</p>
+            </div>
+            <div class="info-card fade-in">
+                <div class="info-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                    </svg>
+                </div>
+                <h3>Dresscode</h3>
+                <p class="highlight-text">Keiner</p>
+                <p>Kommt wie ihr euch wohlfühlt!</p>
             </div>
         </div>
     </section>
 
-    <!-- RSVP Section -->
-    <section class="section rsvp-section" id="rsvp">
-        <h2 class="section-title fade-in">Rückmeldung</h2>
-        <p class="rsvp-text fade-in">Wir würden uns sehr freuen, wenn du uns bis zum 1. August 2026 Bescheid gibst, ob du dabei bist.</p>
-        <a href="mailto:ramona.schmidt@email.de?subject=Rückmeldung%20Hochzeit%20Nico%20%26%20Franziska" class="rsvp-btn fade-in">Jetzt antworten</a>
+    <!-- Day After Section -->
+    <section class="section day-after-section" id="party">
+        <h2 class="section-title fade-in">Am Tag darauf</h2>
+        <div class="party-card fade-in">
+            <div class="party-emoji">🥂</div>
+            <h3 class="party-title">Umtrunk</h3>
+            <p class="party-date">03. Oktober 2026 · Samstag</p>
+            <div class="party-location">
+                <div class="party-location-name">Veranstaltung&Fest</div>
+                <div class="party-location-place">Oberaußem</div>
+            </div>
+            <p class="party-note">Mehr Infos folgen in Kürze...</p>
+        </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="hearts">♥ ♥ ♥</div>
-        <p>Nico & Franziska | 27. September 2026</p>
-        <p>Fragen? Schreib uns: kontakt@nico-und-ramona.de</p>
+        <p>Nico & Franziska | 02. Oktober 2026</p>
+        <p>Fragen? Schreib uns einfach!</p>
     </footer>
 
     <script>
@@ -418,7 +628,7 @@
         });
 
         // Navigation dots
-        const sections = ['hero', 'info', 'rsvp'];
+        const sections = ['hero', 'schedule', 'info', 'party'];
         const dots = document.querySelectorAll('.nav-dot');
 
         // Smooth scroll on dot click
