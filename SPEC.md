@@ -1,7 +1,7 @@
 # Wedding Landing Page - SPEC.md
 
 ## Project Overview
-- **Name:** Nico & Ramona - Wedding Landing Page
+- **Name:** Nico & Franziska - Wedding Landing Page
 - **Type:** Simple, elegant informational website for wedding guests
 - **Core functionality:** Display key information about the wedding day
 - **Target users:** Wedding guests
@@ -29,7 +29,7 @@ Elegant, romantic, and modern. Soft color palette with warm tones. Clean typogra
 - Soft color scheme: cream, sage green, gold accents
 
 ## Content
-- **Couple Names:** Nico & Ramona
+- **Couple Names:** Nico & Franziska
 - **Wedding Date:** 27. September 2026
 - **Ceremony:** Beginnt um 14:00 Uhr
 - **Location:** [Venue name to be determined - use placeholder]
