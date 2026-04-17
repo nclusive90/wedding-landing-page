@@ -264,6 +264,28 @@
             display: inline-block;
         }
 
+        .map-container {
+            margin-top: 15px;
+        }
+
+        .maps-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: var(--gold);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .maps-link:hover {
+            background: var(--sage);
+            transform: scale(1.05);
+        }
+
         /* Info Section */
         .info-section {
             background: linear-gradient(135deg, var(--sage) 0%, var(--sage-light) 100%);
@@ -533,7 +555,23 @@
                     <div class="timeline-time">12:00 Uhr</div>
                     <div class="timeline-title">Die Trauung</div>
                     <div class="timeline-desc">Die standesamtliche Hochzeit im Forum Terra Nova in Elsdorf.</div>
-                    <div class="timeline-location">📍 Forum Terra Nova, Elsdorf</div>
+                    <div class="timeline-location">📍 Forum Terra Nova<br>Nordrandweg, 50189 Elsdorf</div>
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2497.4!2d6.5925!3d50.9147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsNU40JzU0LjIiTiA2wrAzNSczMy4yIkU!5e0!3m2!1sde!2sde!4v1713380000000!5m2!1sde!2sde"
+                            width="100%" 
+                            height="200" 
+                            style="border:0; border-radius: 15px; margin-top: 15px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=50.9146823,6.5925078" 
+                           target="_blank" 
+                           class="maps-link">
+                           📍 Route planen →
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="timeline-item fade-in">
