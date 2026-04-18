@@ -465,6 +465,65 @@
             background: var(--sage);
         }
 
+        /* Countdown Section */
+        .countdown-section {
+            background: var(--cream-light);
+            text-align: center;
+        }
+
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 100px;
+        }
+
+        .countdown-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 600;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .countdown-label {
+            font-size: 0.85rem;
+            color: var(--charcoal-light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 10px;
+        }
+
+        .countdown-separator {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--gold);
+            opacity: 0.5;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 600px) {
+            .countdown-container {
+                gap: 10px;
+            }
+            .countdown-item {
+                min-width: 70px;
+            }
+            .countdown-separator {
+                font-size: 2rem;
+            }
+        }
+
         /* Animations */
         .fade-in {
             opacity: 0;
@@ -516,6 +575,7 @@
     <!-- Navigation Dots -->
     <nav class="nav-dots">
         <button class="nav-dot active" data-section="hero" aria-label="Hero"></button>
+        <button class="nav-dot" data-section="countdown" aria-label="Countdown"></button>
         <button class="nav-dot" data-section="schedule" aria-label="Ablauf"></button>
         <button class="nav-dot" data-section="info" aria-label="Info"></button>
         <button class="nav-dot" data-section="party" aria-label="Party"></button>
@@ -534,6 +594,32 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
+        </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="section countdown-section" id="countdown">
+        <h2 class="section-title fade-in">Countdown</h2>
+        <div class="countdown-container fade-in">
+            <div class="countdown-item">
+                <span class="countdown-number" id="days">000</span>
+                <span class="countdown-label">Tage</span>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">00</span>
+                <span class="countdown-label">Stunden</span>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">00</span>
+                <span class="countdown-label">Minuten</span>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">00</span>
+                <span class="countdown-label">Sekunden</span>
+            </div>
         </div>
     </section>
 
@@ -666,7 +752,7 @@
         });
 
         // Navigation dots
-        const sections = ['hero', 'schedule', 'info', 'party'];
+        const sections = ['hero', 'countdown', 'schedule', 'info', 'party'];
         const dots = document.querySelectorAll('.nav-dot');
 
         // Smooth scroll on dot click
@@ -692,6 +778,35 @@
         sections.forEach(sectionId => {
             sectionObserver.observe(document.getElementById(sectionId));
         });
+
+        // Countdown Timer
+        const weddingDate = new Date('2026-10-02T12:00:00');
+        
+        function updateCountdown() {
+            const now = new Date();
+            const diff = weddingDate - now;
+            
+            if (diff <= 0) {
+                document.getElementById('days').textContent = '000';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = String(days).padStart(3, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
